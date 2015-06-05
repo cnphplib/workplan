@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>用户列表</title>
+<link rel="stylesheet" href="__PUBLIC__/lib/bootstrap/css/bootstrap.min.css">
+<script src="__PUBLIC__/lib/bootstrap/js/jquery.min.js"></script>
+<script src="__PUBLIC__/lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table  style="width:98%; margin:0 auto;" class="table  table-striped table-bordered table-condensed text-center" >
+<tr>
+	<td  colspan="2" class="text-center"><h2 style="margin-top: 10px;">选择自己的名称</h2></td>
+</tr>
+<volist name="userGroup" id="uGroup">
+<tr>
+	<td style="vertical-align: middle; width:15%;"><h4>{$uGroup.pname}</h4></td>
+	<td style="padding: 2 2 2 2;  width:85%;" colspan="6">
+		<table  class="table  table-bordered " style="margin:0 auto;">
+				<volist name="uGroup.users" id="vo">
+					<if condition="$key%5 eq 0" >
+						<tr><td  style="vertical-align: middle;">
+					<elseif condition="$key%6 elt 4"/>
+						<td  style="vertical-align: middle;">
+					</if>
+							<a href="__APP__/Home/Index/showUser/uid/{$vo.id}"  style="text-decoration:none;">
+								<h4>{$vo.name}
+									<if condition="$vo.write eq true">
+										<span class="btn btn-info">未填写</span>
+									</if>
+								</h4>
+							</a>
+					<if condition="$key%6 lt 4" >
+						</td>
+					<elseif condition="$key%6 eq 4"/>
+						</td></tr>
+					</if>	
+				</volist>
+		</table>
+	</td>
+</tr>
+</volist>
+</table>
+</body>
+</html>
